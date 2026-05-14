@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://GabrielDP97.github.io/repoweb',
+  site: 'https://gabrieldp97.github.io/repoweb',
+  base: '/repoweb',
   output: 'static',
   integrations: [
     tailwind()

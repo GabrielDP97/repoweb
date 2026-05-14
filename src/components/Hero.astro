@@ -5,6 +5,7 @@
  */
 
 import { Mail, Phone, Github, Linkedin, MapPin, ChevronDown } from 'lucide-astro';
+import profileImg from '../assets/profile.webp';
 ---
 
 <section id="hero" class="hero-section">
@@ -14,7 +15,7 @@ import { Mail, Phone, Github, Linkedin, MapPin, ChevronDown } from 'lucide-astro
       <div class="hero-photo" data-reveal>
         <div class="photo-wrapper">
           <img
-            src="/profile.webp"
+            src={profileImg.src}
             alt="Ángel Gabriel Delgado Pérez - Full Stack Developer"
             width="280"
             height="280"

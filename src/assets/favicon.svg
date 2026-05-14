@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="100" height="50">
+  <defs>
+    <filter id="g" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- DP maxed out — no background, fills viewBox -->
+  <g fill="#1a8a70" filter="url(#g)">
+    <!-- D — stretched to fill left half -->
+    <path d="M10 8 L10 42 L30 42 C40 42 46 35 46 25 C46 15 40 8 30 8 Z M18 14 L28 14 C34 14 38 18 38 25 C38 32 34 36 28 36 L18 36 Z"/>
+    <!-- P — stretched to fill right half -->
+    <path d="M52 8 L52 42 L60 42 L60 24 L72 24 C82 24 90 18 90 14 C90 10 82 8 72 8 Z M60 14 L70 14 C75 14 82 15 82 16 C82 17 75 18 70 18 L60 18 Z"/>
+  </g>
+</svg>

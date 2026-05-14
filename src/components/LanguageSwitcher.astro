@@ -1,0 +1,238 @@
+---
+/**
+ * LanguageSwitcher.astro - Flag-based language selector
+ * Shows current language flag, dropdown with 3 options
+ * Uses flag-icons CSS classes: fi fi-es, fi fi-gb, fi fi-de
+ * Calls setLanguage from i18n system
+ */
+
+interface Props {
+  size?: 'sm' | 'md';
+}
+
+const { size = 'md' } = Astro.props;
+const switcherId = `lang-switcher-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class={`language-switcher size-${size}`} id={switcherId} role="group" aria-label="Language selector">
+  <button
+    class="current-lang-btn"
+    aria-label="Change language"
+    type="button"
+  >
+    <img class="current-flag" id={`${switcherId}-img`} src="https://flagcdn.com/w20/es.png" alt="ES" width="20" height="14" />
+    <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <div class="lang-dropdown">
+    <button class="lang-option" data-lang="es" aria-pressed="false" type="button">
+      <img src="https://flagcdn.com/w20/es.png" width="20" height="14" alt="Español" />
+      <span class="lang-label">ES</span>
+    </button>
+    <button class="lang-option" data-lang="en" aria-pressed="false" type="button">
+      <img src="https://flagcdn.com/w20/gb.png" width="20" height="14" alt="English" />
+      <span class="lang-label">EN</span>
+    </button>
+    <button class="lang-option" data-lang="de" aria-pressed="false" type="button">
+      <img src="https://flagcdn.com/w20/de.png" width="20" height="14" alt="Deutsch" />
+      <span class="lang-label">DE</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .current-flag {
+    width: 20px;
+    height: 14px;
+    object-fit: contain;
+    border-radius: 2px;
+    line-height: 1;
+  }
+
+  .current-lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-primary);
+  }
+
+  .current-lang-btn:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .current-lang-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .chevron {
+    opacity: 0.6;
+    transition: transform var(--transition-fast);
+  }
+
+  .language-switcher.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all var(--transition-base);
+    z-index: 100;
+    min-width: 120px;
+  }
+
+  .language-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    color: var(--text-primary);
+    text-align: left;
+  }
+
+  .lang-option:hover {
+    background: var(--bg-elevated);
+  }
+
+  .lang-option:first-child {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .lang-option:last-child {
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .lang-option img {
+    width: 20px;
+    height: 14px;
+    object-fit: contain;
+    border-radius: 2px;
+  }
+
+  .lang-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Size variants */
+  .size-sm .current-lang-btn {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .size-sm .lang-option {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .size-sm .current-flag {
+    width: 16px;
+    height: 12px;
+  }
+
+  .size-sm .lang-option img {
+    width: 16px;
+    height: 12px;
+  }
+</style>
+
+<script>
+  // Initialize ALL language switchers on the page
+  function initAllSwitchers() {
+    document.querySelectorAll('.language-switcher').forEach((switcher) => {
+      const container = switcher as HTMLElement;
+      const toggleBtn = container.querySelector('.current-lang-btn');
+      const options = container.querySelectorAll('.lang-option');
+      const switcherId = container.id || 'lang-switcher-default';
+      const currentFlagImg = document.getElementById(`${switcherId}-img`) as HTMLImageElement | null;
+
+function updateCurrentFlag(lang: string) {
+        const flagCode = lang === 'en' ? 'gb' : lang;
+        if (currentFlagImg) {
+          currentFlagImg.src = `https://flagcdn.com/w20/${flagCode}.png`;
+        }
+        options.forEach((opt) => {
+          const el = opt as HTMLElement;
+          el.setAttribute('aria-pressed', el.dataset.lang === lang ? 'true' : 'false');
+        });
+      }
+
+      // Toggle dropdown
+      toggleBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other switchers first
+        document.querySelectorAll('.language-switcher.open').forEach((s) => {
+          if (s !== container) s.classList.remove('open');
+        });
+        container.classList.toggle('open');
+      });
+
+      // Handle language selection
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          const lang = (option as HTMLElement).dataset.lang;
+          if (lang && window.setLanguage) {
+            window.setLanguage(lang as 'es' | 'en' | 'de');
+          }
+          updateCurrentFlag(lang || 'es');
+          container.classList.remove('open');
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!container.contains(e.target as Node)) {
+          container.classList.remove('open');
+        }
+      });
+
+      // Initialize
+      const stored = localStorage.getItem('portfolio-lang') || 'es';
+      updateCurrentFlag(stored);
+
+      // Listen for i18n language changes
+      window.addEventListener('language-changed', (e: Event) => {
+        const ce = e as CustomEvent<{ lang: string }>;
+        updateCurrentFlag(ce.detail.lang);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllSwitchers);
+  } else {
+    initAllSwitchers();
+  }
+</script>

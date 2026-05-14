@@ -1,0 +1,92 @@
+---
+/**
+ * MobileMenu.astro - Hamburger menu for mobile navigation
+ * Hidden on desktop (lg breakpoint), visible on mobile
+ * Toggles nav visibility via CSS checkbox hack or minimal JS
+ */
+---
+
+<button
+  id="mobile-menu-toggle"
+  class="mobile-menu-toggle lg:hidden"
+  aria-label="Toggle navigation menu"
+  aria-expanded="false"
+  type="button"
+>
+  <span class="hamburger-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </span>
+  <span class="close-icon hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </span>
+</button>
+
+<style>
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .mobile-menu-toggle:hover {
+    background: var(--bg-elevated);
+  }
+
+  .mobile-menu-toggle:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .hamburger-icon,
+  .close-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu-toggle.open .hamburger-icon {
+    display: none;
+  }
+
+  .mobile-menu-toggle.open .close-icon {
+    display: flex;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const nav = document.getElementById('main-nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen.toString());
+      nav.classList.toggle('mobile-nav-open');
+    });
+
+    // Close menu when clicking a nav link
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('mobile-nav-open');
+      });
+    });
+  }
+</script>

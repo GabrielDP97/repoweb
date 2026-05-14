@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Background",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Ángel Gabriel Delgado Pérez",
+    "role": "Full Stack Developer",
+    "location": "Algeciras, Spain",
+    "tagline": "Developer with background in education and cybersecurity, building scalable web solutions with passion for clean code and user experience.",
+    "cta_download": "Download CV",
+    "cta_contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "text": "Full Stack Developer with experience in web and mobile application development. Passionate about building scalable solutions and continuous learning. My background in education and cybersecurity brings a unique perspective to developing secure and accessible software.",
+    "secondary": "I strive to write clean, maintainable code focused on solutions that create real impact for users.",
+    "years": "7+",
+    "years_label": "Years coding",
+    "projects": "2+",
+    "projects_label": "Projects completed",
+    "techs": "15+",
+    "techs_label": "Technologies mastered",
+    "trait_curious": "Curious",
+    "trait_organized": "Organized",
+    "trait_teamplayer": "Team player",
+    "trait_learner": "Continuous learning"
+  },
+  "motivation": {
+    "title": "What I Can Offer",
+    "intro": "My goal is to contribute to innovative projects where I can apply my technical and personal skills.",
+    "highlights": [
+      "Backend development with Java, Spring Boot and Kotlin",
+      "Frontend with React, TypeScript and Astro",
+      "Database design with MySQL, PostgreSQL and REST APIs",
+      "Agile team work with Git and Docker"
+    ],
+    "backend_title": "Backend Development",
+    "backend_desc": "Robust REST APIs with Java, Spring Boot and Kotlin. Designing scalable architectures and maintaining high-availability systems.",
+    "frontend_title": "Modern Frontend",
+    "frontend_desc": "Reactive interfaces with React, TypeScript and Astro. Focus on accessibility, performance, and exceptional user experience.",
+    "database_title": "Databases",
+    "database_desc": "Schema design and optimization with MySQL and PostgreSQL. Efficient queries and data modeling for high-performance applications.",
+    "teaching_title": "Teaching Experience",
+    "teaching_desc": "Background in education brings a unique perspective. Ability to explain technical concepts clearly and mentor junior developers.",
+    "security_title": "Cybersecurity",
+    "security_desc": "Knowledge of secure development practices. Implementing authentication, data validation, and protection against vulnerabilities.",
+    "team_title": "Collaboration",
+    "team_desc": "Experience in agile teams, code reviews and Scrum methodologies. Effective communication with stakeholders and multidisciplinary work."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "items": [
+      { "name": "Java", "icon": "java" },
+      { "name": "Python", "icon": "python" },
+      { "name": "C#", "icon": "c#" },
+      { "name": "Spring Boot", "icon": "spring" },
+      { "name": "React", "icon": "react" },
+      { "name": "TypeScript", "icon": "typescript" },
+      { "name": "Astro", "icon": "astro" },
+      { "name": "Kotlin", "icon": "kotlin" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "PostgreSQL", "icon": "postgresql" },
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Git", "icon": "git" },
+      { "name": "Node.js", "icon": "nodejs" },
+      { "name": "Linux", "icon": "linux" },
+      { "name": "HTML", "icon": "html" },
+      { "name": "CSS", "icon": "css" }
+    ]
+  },
+  "softskills": {
+    "title": "Soft Skills",
+    "items": [
+      { "label": "Teamwork" },
+      { "label": "Problem solving" },
+      { "label": "Effective communication" },
+      { "label": "Leadership" },
+      { "label": "Adaptability" },
+      { "label": "Time management" },
+      { "label": "Continuous learning" },
+      { "label": "Critical thinking" },
+      { "label": "Proactivity" },
+      { "label": "Active listening" }
+    ]
+  },
+  "experience": {
+    "title": "Background",
+    "legend_work": "Work Experience",
+    "legend_edu": "Education",
+    "ascending": "Most recent",
+    "entries": [
+      { "type": "education", "year": "2026", "endYear": "2026", "title": "Python for AI", "org": "EOI — 130h", "icon": "BookOpen" },
+      { "type": "education", "year": "2025", "endYear": "2026", "title": "DAW", "org": "Higher Degree in Web Development", "icon": "BookOpen" },
+      { "type": "education", "year": "2024", "endYear": "2026", "title": "DAM", "org": "Higher Degree in Multiplatform App Dev", "icon": "BookOpen" },
+      { "type": "work", "year": "2024", "endYear": "2025", "title": "Algorithmics", "org": "Programming Instructor — C# and Python", "icon": "Briefcase" },
+      { "type": "education", "year": "2023", "endYear": "2024", "title": "Cybersecurity", "org": "Higher Degree FP in Cybersecurity", "icon": "Award" },
+      { "type": "education", "year": "2021", "endYear": "2023", "title": "ASIR", "org": "Higher Degree in Sys Admin & Networking", "icon": "GraduationCap" }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "view_code": "View source code",
+    "checklist_shop": {
+      "name": "CheckList Shop",
+      "description": "Local e-commerce Android application developed in Kotlin with SQLite and Room for data persistence. Implementation of the MVC pattern with product management, shopping cart and wishlist features.",
+      "tech": ["Kotlin", "SQLite", "Room", "MVC"],
+      "no_github": true
+    },
+    "stock_control": {
+      "name": "StockControl",
+      "description": "Inventory management system developed in React with Node.js backend. Frontend with Tailwind CSS and responsive design. Docker containers for deployment.",
+      "tech": ["JavaScript", "CSS", "HTML", "Docker", "React", "Tailwind"],
+      "github_url": "https://github.com/GabrielDP97/StockControl"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "copyright": "© 2026 Gabriel Delgado Pérez"
+  }
+}

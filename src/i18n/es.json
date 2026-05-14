@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "experience": "Trayectoria",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "name": "Ángel Gabriel Delgado Pérez",
+    "role": "Desarrollador Full Stack",
+    "location": "Algeciras, España",
+    "tagline": "Desarrollador con background en educación y ciberseguridad, creando soluciones web escalables con pasión por el código limpio y la experiencia de usuario.",
+    "cta_download": "Descargar CV",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "text": "Desarrollador Full Stack con experiencia en el desarrollo de aplicaciones web y móviles. Apasionado por construir soluciones escalables y el aprendizaje continuo. Mi background en educación y ciberseguridad aporta una perspectiva única en el desarrollo de software seguro y accesible.",
+    "secondary": "Me esfuerzo por escribir código limpio, mantenible y orientado a soluciones que generan impacto real en los usuarios.",
+    "years": "7+",
+    "years_label": "Años programando",
+    "projects": "2+",
+    "projects_label": "Proyectos completados",
+    "techs": "15+",
+    "techs_label": "Tecnologías dominadas",
+    "trait_curious": "Curioso",
+    "trait_organized": "Organizado",
+    "trait_teamplayer": "Trabajo en equipo",
+    "trait_learner": "Aprendizaje continuo"
+  },
+  "motivation": {
+    "title": "Qué puedo aportar",
+    "intro": "Mi objetivo es contribuir a proyectos innovadores donde pueda aplicar mis habilidades técnicas y personales.",
+    "highlights": [
+      "Desarrollo backend con Java, Spring Boot y Kotlin",
+      "Frontend con React, TypeScript y Astro",
+      "Bases de datos MySQL, PostgreSQL y diseño de APIs REST",
+      "Trabajo en equipo ágil con Git y Docker"
+    ],
+    "backend_title": "Desarrollo Backend",
+    "backend_desc": "APIs REST robustas con Java, Spring Boot y Kotlin. Diseño de arquitecturas escalables y mantenimiento de sistemas de alta disponibilidad.",
+    "frontend_title": "Frontend Moderno",
+    "frontend_desc": "Interfaces reactivas con React, TypeScript y Astro. Enfoque en accesibilidad, rendimiento y experiencia de usuario excepcional.",
+    "database_title": "Bases de Datos",
+    "database_desc": "Diseño y optimización de esquemas con MySQL y PostgreSQL. Consultas eficientes y modelado de datos para aplicaciones de alto rendimiento.",
+    "teaching_title": "Experiencia Docente",
+    "teaching_desc": "Background en educación aporta una perspectiva única. Capacidad de explicar conceptos técnicos de forma clara y mentorizar junior developers.",
+    "security_title": "Ciberseguridad",
+    "security_desc": "Conocimiento en prácticas seguras de desarrollo. Implementación de autenticación, validación de datos y protección contra vulnerabilidades.",
+    "team_title": "Colaboración",
+    "team_desc": "Experiencia en equipos ágiles, code reviews y metodologías Scrum. Comunicación efectiva con stakeholders y trabajo multidisciplinario."
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "items": [
+      { "name": "Java", "icon": "java" },
+      { "name": "Python", "icon": "python" },
+      { "name": "C#", "icon": "c#" },
+      { "name": "Spring Boot", "icon": "spring" },
+      { "name": "React", "icon": "react" },
+      { "name": "TypeScript", "icon": "typescript" },
+      { "name": "Astro", "icon": "astro" },
+      { "name": "Kotlin", "icon": "kotlin" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "PostgreSQL", "icon": "postgresql" },
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Git", "icon": "git" },
+      { "name": "Node.js", "icon": "nodejs" },
+      { "name": "Linux", "icon": "linux" },
+      { "name": "HTML", "icon": "html" },
+      { "name": "CSS", "icon": "css" }
+    ]
+  },
+  "softskills": {
+    "title": "Habilidades Blandas",
+    "items": [
+      { "label": "Trabajo en equipo" },
+      { "label": "Resolución de problemas" },
+      { "label": "Comunicación efectiva" },
+      { "label": "Liderazgo" },
+      { "label": "Adaptabilidad" },
+      { "label": "Gestión del tiempo" },
+      { "label": "Aprendizaje continuo" },
+      { "label": "Pensamiento crítico" },
+      { "label": "Proactividad" },
+      { "label": "Escucha activa" }
+    ]
+  },
+  "experience": {
+    "title": "Trayectoria",
+    "legend_work": "Experiencia laboral",
+    "legend_edu": "Formación",
+    "ascending": "Más reciente",
+    "entries": [
+      { "type": "education", "year": "2026", "endYear": "2026", "title": "Python para IA", "org": "EOI — 130h", "icon": "BookOpen" },
+      { "type": "education", "year": "2025", "endYear": "2026", "title": "DAW", "org": "CFGS Desarrollo de Aplicaciones Web", "icon": "BookOpen" },
+      { "type": "education", "year": "2024", "endYear": "2026", "title": "DAM", "org": "CFGS Desarrollo de Aplicaciones Multiplataforma", "icon": "BookOpen" },
+      { "type": "work", "year": "2024", "endYear": "2025", "title": "Algorithmics", "org": "Docente de Programación — C# y Python", "icon": "Briefcase" },
+      { "type": "education", "year": "2023", "endYear": "2024", "title": "Ciberseguridad", "org": "Máster FP en Ciberseguridad", "icon": "Award" },
+      { "type": "education", "year": "2021", "endYear": "2023", "title": "ASIR", "org": "CFGS Administración de Sistemas Informáticos en Red", "icon": "GraduationCap" }
+    ]
+  },
+  "projects": {
+    "title": "Proyectos",
+    "view_code": "Ver código fuente",
+    "checklist_shop": {
+      "name": "CheckList Shop",
+      "description": "Aplicación Android de comercio electrónico local desarrollada en Kotlin con SQLite y Room para persistencia de datos. Implementación del patrón MVC con gestión de productos, carrito de compras y lista de deseos.",
+      "tech": ["Kotlin", "SQLite", "Room", "MVC"],
+      "no_github": true
+    },
+    "stock_control": {
+      "name": "StockControl",
+      "description": "Sistema de gestión de inventario desarrollado en React con backend en Node.js. Frontend con Tailwind CSS y diseño responsive. Contenedores Docker para despliegue.",
+      "tech": ["JavaScript", "CSS", "HTML", "Docker", "React", "Tailwind"],
+      "github_url": "https://github.com/GabrielDP97/StockControl"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "copyright": "© 2026 Gabriel Delgado Pérez"
+  }
+}

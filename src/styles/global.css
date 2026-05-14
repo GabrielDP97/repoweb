@@ -1,0 +1,339 @@
+/* CV 2.0 Portfolio — Global Styles */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES — LIGHT THEME (default)
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-deep: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f3f5;
+
+  /* Neon / Accent Colors */
+  --neon-cyan: #00d4aa;
+  --neon-blue: #4dabf7;
+  --neon-purple: #9775fa;
+  --neon-pink: #f783ac;
+  --neon-yellow: #ffd43b;
+
+  /* Text */
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-muted: #868e96;
+  --text-inverse: #f8f9fa;
+
+  /* Borders */
+  --border-default: #dee2e6;
+  --border-muted: #e9ecef;
+  --border-accent: #4dabf7;
+
+  /* Accent / Brand */
+  --accent-primary: #4dabf7;
+  --accent-secondary: #00d4aa;
+  --accent-glow: rgba(77, 171, 247, 0.25);
+  --accent-glow-strong: rgba(77, 171, 247, 0.5);
+
+  /* Status */
+  --success: #40c057;
+  --warning: #fab005;
+  --error: #fa5252;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+
+  /* Spacing */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES — DARK THEME
+   ============================================ */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-deep: #060913;
+  --bg-surface: #0d1117;
+  --bg-elevated: #161b22;
+
+  /* Neon / Accent Colors — vivid on dark */
+  --neon-cyan: #4bf3c8;
+  --neon-blue: #54b9ff;
+  --neon-purple: #a78bfa;
+  --neon-pink: #f472b6;
+  --neon-yellow: #facc15;
+
+  /* Text */
+  --text-primary: #f0f6fc;
+  --text-secondary: #c9d1d9;
+  --text-muted: #8b949e;
+  --text-inverse: #0d1117;
+
+  /* Borders */
+  --border-default: #30363d;
+  --border-muted: #21262d;
+  --border-accent: #54b9ff;
+
+  /* Accent / Brand */
+  --accent-primary: #4bf3c8;
+  --accent-secondary: #54b9ff;
+  --accent-glow: rgba(75, 243, 200, 0.2);
+  --accent-glow-strong: rgba(75, 243, 200, 0.4);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+}
+
+/* ============================================
+   TAILWIND DIRECTIVES
+   ============================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE RESET & TYPOGRAPHY
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+}
+
+/* Headings use Space Grotesk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Monospace for code */
+code, pre, kbd, samp {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Links */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+::selection {
+  background-color: var(--accent-glow-strong);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATION SYSTEM
+   ============================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   MARQUEE ANIMATION SYSTEM
+   (moved to SkillsMarquee.astro scoped styles)
+   ============================================ */
+
+/* ============================================
+   FOCUS VISIBLE — ACCESSIBILITY
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.glow-text {
+  text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+}
+
+.glow-box {
+  box-shadow: var(--shadow-glow);
+}
+
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   NEON GRADIENT TEXT
+   ============================================ */
+.neon-gradient-text {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   SKILLS MARQUEE — PR5a
+   ============================================ */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+#skills .skills-marquee {
+  padding: 3rem 0;
+  background: var(--bg-deep) !important;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#skills .marquee-wrapper {
+  position: relative !important;
+  overflow: hidden !important;
+  mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+#skills .marquee-track {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2.5rem !important;
+  padding: 1.5rem 0 !important;
+  flex-shrink: 0 !important;
+  will-change: transform !important;
+}
+
+#skills .marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #skills .marquee-track { animation: none !important; overflow-x: auto !important; }
+  #skills .marquee-inner { flex-wrap: nowrap !important; }
+}
+
+#skills .marquee-track img {
+  width: 96px !important;
+  height: 96px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  padding: 0.5rem !important;
+  filter: drop-shadow(0 0 8px rgba(75, 243, 200, 0.2)) !important;
+  transition: filter 0.2s ease !important;
+}
+
+#skills .marquee-track img[alt="Astro"] {
+  width: 120px !important;
+  height: 96px !important;
+  padding: 0 !important;
+}
+
+/* Astro logo: invert black → white in dark mode */
+[data-theme="dark"] #skills .marquee-track img[alt="Astro"] {
+  filter: invert(1) brightness(1.1) !important;
+}
+
+#skills .marquee-track img:hover {
+  filter: drop-shadow(0 0 16px rgba(75, 243, 200, 0.5)) !important;
+  transform: scale(1.1) !important;
+}
+
+[data-theme="light"] #skills .marquee-track img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)) !important;
+}
+
+[data-theme="light"] #skills .marquee-track img:hover {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25)) !important;
+}

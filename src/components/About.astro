@@ -1,0 +1,193 @@
+---
+/**
+ * About.astro - "Sobre mí" section for Gabriel's CV 2.0
+ * PR3: Content Components
+ */
+
+---
+
+<section id="about" class="about-section">
+  <div class="about-container">
+    <!-- Section Title -->
+    <h2 class="section-title" data-reveal data-i18n="about.title">
+      Sobre mí
+      <span class="title-accent"></span>
+    </h2>
+
+    <div class="about-content">
+      <!-- Left Column: Text -->
+      <div class="about-text" data-reveal>
+        <p data-i18n="about.text">
+          Desarrollador Full Stack con experiencia en el desarrollo de aplicaciones web y móviles. Apasionado por construir soluciones escalables y el aprendizaje continuo. Mi background en educación y ciberseguridad aporta una perspectiva única en el desarrollo de software seguro y accesible.
+        </p>
+        <p class="about-text-secondary">
+          <span data-i18n="about.secondary">Me esfuerzo por escribir código limpio, mantenible y orientado a soluciones que generan impacto real en los usuarios.</span>
+        </p>
+      </div>
+
+      <!-- Right Column: Stats -->
+      <div class="about-stats" data-reveal>
+        <div class="stat-card">
+          <span class="stat-number" data-i18n="about.years">7+</span>
+          <span class="stat-label" data-i18n="about.years_label">Años programando</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-i18n="about.projects">2+</span>
+          <span class="stat-label" data-i18n="about.projects_label">Proyectos completados</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-i18n="about.techs">15+</span>
+          <span class="stat-label" data-i18n="about.techs_label">Tecnologías dominadas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Traits -->
+    <div class="about-traits" data-reveal>
+      <span class="trait-badge" data-i18n="about.trait_curious">Curioso</span>
+      <span class="trait-badge" data-i18n="about.trait_organized">Organizado</span>
+      <span class="trait-badge" data-i18n="about.trait_teamplayer">Trabajo en equipo</span>
+      <span class="trait-badge" data-i18n="about.trait_learner">Aprendizaje continuo</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section */
+  .about-section {
+    padding: 6rem 1.5rem;
+    background-color: var(--bg-surface);
+  }
+
+  .about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+  }
+
+  .title-accent {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+    border-radius: var(--radius-full);
+  }
+
+  /* Content Grid */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Text Column */
+  .about-text {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .about-text p {
+    margin-bottom: 1rem;
+  }
+
+  .about-text-secondary {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  /* Stats Column */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .about-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    text-align: center;
+    transition: all var(--transition-fast);
+  }
+
+  .stat-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .stat-number {
+    display: block;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Traits */
+  .about-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    padding-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-traits {
+      justify-content: flex-start;
+    }
+  }
+
+  .trait-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .trait-badge:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+/**
+ * SoftSkillsMarquee.astro - Soft skills horizontal marquee (PR5b)
+ * JS-based infinite scroll: pixel-perfect, no flicker.
+ */
+---
+
+<section id="softskills" class="softskills-section">
+  <div class="softskills-marquee">
+    <div class="softskills-row-top">
+      <div class="softskills-wrapper">
+        <div class="softskills-track" data-direction="left">
+<span class="softskill-badge" data-idx="0">Trabajo en equipo</span>
+      <span class="softskill-badge" data-idx="1">Resolución de problemas</span>
+      <span class="softskill-badge" data-idx="2">Comunicación efectiva</span>
+      <span class="softskill-badge" data-idx="3">Liderazgo</span>
+      <span class="softskill-badge" data-idx="4">Adaptabilidad</span>
+      <span class="softskill-badge" data-idx="0">Trabajo en equipo</span>
+      <span class="softskill-badge" data-idx="1">Resolución de problemas</span>
+      <span class="softskill-badge" data-idx="2">Comunicación efectiva</span>
+      <span class="softskill-badge" data-idx="3">Liderazgo</span>
+      <span class="softskill-badge" data-idx="4">Adaptabilidad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="softskills-row-bottom">
+      <div class="softskills-wrapper">
+        <div class="softskills-track" data-direction="right">
+<span class="softskill-badge" data-idx="5">Gestión del tiempo</span>
+      <span class="softskill-badge" data-idx="6">Aprendizaje continuo</span>
+      <span class="softskill-badge" data-idx="7">Pensamiento crítico</span>
+      <span class="softskill-badge" data-idx="8">Proactividad</span>
+      <span class="softskill-badge" data-idx="9">Escucha activa</span>
+      <span class="softskill-badge" data-idx="5">Gestión del tiempo</span>
+      <span class="softskill-badge" data-idx="6">Aprendizaje continuo</span>
+      <span class="softskill-badge" data-idx="7">Pensamiento crítico</span>
+      <span class="softskill-badge" data-idx="8">Proactividad</span>
+      <span class="softskill-badge" data-idx="9">Escucha activa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const softSkillsData: Record<string, string[]> = {
+    es: ['Trabajo en equipo', 'Resolución de problemas', 'Comunicación efectiva', 'Liderazgo', 'Adaptabilidad', 'Gestión del tiempo', 'Aprendizaje continuo', 'Pensamiento crítico', 'Proactividad', 'Escucha activa'],
+    en: ['Teamwork', 'Problem solving', 'Effective communication', 'Leadership', 'Adaptability', 'Time management', 'Continuous learning', 'Critical thinking', 'Proactivity', 'Active listening'],
+    de: ['Teamarbeit', 'Problemlösung', 'Effektive Kommunikation', 'Führungsqualitäten', 'Anpassungsfähigkeit', 'Zeitmanagement', 'Kontinuierliches Lernen', 'Kritisches Denken', 'Proaktivität', 'Aktives Zuhören']
+  };
+
+  function updateSoftSkills(lang: string) {
+    const data = softSkillsData[lang] || softSkillsData['es'];
+    document.querySelectorAll<HTMLElement>('#softskills .softskill-badge[data-idx]').forEach(badge => {
+      const idx = parseInt(badge.dataset.idx || '0', 10);
+      if (data[idx]) badge.textContent = data[idx];
+    });
+  }
+
+  const savedLang = localStorage.getItem('portfolio-lang') || 'es';
+  updateSoftSkills(savedLang);
+
+  window.addEventListener('language-changed', ((e: CustomEvent) => {
+    updateSoftSkills(e.detail?.lang || 'es');
+  }) as EventListener);
+
+  // Infinite scroll: transform translateX, no flicker
+  function initInfiniteMarquee(track: HTMLElement, direction: 'left' | 'right') {
+    let pos = 0;
+    const speed = direction === 'left' ? 0.7 : -0.7;
+    let paused = false;
+
+    const wrapper = track.closest('.softskills-wrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', () => { paused = true; });
+      wrapper.addEventListener('mouseleave', () => { paused = false; });
+    }
+
+    const move = () => {
+      if (!paused) {
+        pos += speed;
+        // Halfway through, snap back to start (seamless loop)
+        if (direction === 'left' && pos >= track.scrollWidth / 2) pos = 0;
+        if (direction === 'right' && pos <= 0) pos = track.scrollWidth / 2;
+        track.style.transform = `translateX(-${pos}px)`;
+      }
+      requestAnimationFrame(move);
+    };
+
+    setTimeout(() => {
+      pos = 0;
+      track.style.transform = 'translateX(0)';
+      move();
+    }, 100);
+  }
+
+  document.querySelectorAll<HTMLElement>('#softskills .softskills-track').forEach(track => {
+    const dir = (track.dataset.direction || 'left') as 'left' | 'right';
+    initInfiniteMarquee(track, dir);
+  });
+</script>
+
+<style>
+  #softskills .softskills-section {
+    padding: 0;
+  }
+
+  #softskills .softskills-marquee {
+    overflow: hidden;
+    background: var(--bg-deep);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #softskills .softskills-row-top,
+  #softskills .softskills-row-bottom {
+    overflow: hidden;
+  }
+
+  #softskills .softskills-wrapper {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  #softskills .softskills-track {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 0;
+    flex-shrink: 0;
+    overflow-x: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    will-change: transform;
+  }
+
+  #softskills .softskills-track::-webkit-scrollbar {
+    display: none;
+  }
+
+#softskills .softskill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--neon-purple);
+    border-radius: 9999px;
+    color: var(--neon-purple);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  #softskills .softskill-badge:hover {
+    background: var(--neon-purple);
+    color: var(--bg-deep);
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #softskills .softskills-track {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  }
+</style>

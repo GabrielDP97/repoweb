@@ -1,0 +1,223 @@
+---
+/**
+ * Motivation.astro - "Qué puedo aportar" section for Gabriel's CV 2.0
+ * PR3: Content Components
+ */
+
+import { Server, Monitor, Database, GraduationCap, Shield, Users } from 'lucide-astro';
+---
+
+<section id="motivation" class="motivation-section">
+  <div class="motivation-container">
+    <!-- Section Title -->
+    <h2 class="section-title" data-reveal data-i18n="motivation.title">
+      Qué puedo aportar
+      <span class="title-accent"></span>
+    </h2>
+
+    <!-- Intro Text -->
+    <p class="motivation-intro" data-reveal data-i18n="motivation.intro">
+      Mi objetivo es contribuir a proyectos innovadores donde pueda aplicar mis habilidades técnicas y personales.
+    </p>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+      <!-- Card 1: Backend -->
+      <div class="value-card" data-reveal style="--delay: 0">
+        <div class="card-icon">
+          <Server size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.backend_title">Desarrollo Backend</h3>
+        <p class="card-description" data-i18n="motivation.backend_desc">
+          APIs REST robustas con Java, Spring Boot y Kotlin. Diseño de arquitecturas escalables y mantenimiento de sistemas de alta disponibilidad.
+        </p>
+      </div>
+
+      <!-- Card 2: Frontend -->
+      <div class="value-card" data-reveal style="--delay: 1">
+        <div class="card-icon">
+          <Monitor size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.frontend_title">Frontend Moderno</h3>
+        <p class="card-description" data-i18n="motivation.frontend_desc">
+          Interfaces reactivas con React, TypeScript y Astro. Enfoque en accesibilidad, rendimiento y experiencia de usuario excepcional.
+        </p>
+      </div>
+
+      <!-- Card 3: Databases -->
+      <div class="value-card" data-reveal style="--delay: 2">
+        <div class="card-icon">
+          <Database size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.database_title">Bases de Datos</h3>
+        <p class="card-description" data-i18n="motivation.database_desc">
+          Diseño y optimización de esquemas con MySQL y PostgreSQL. Consultas eficientes y modelado de datos para aplicaciones de alto rendimiento.
+        </p>
+      </div>
+
+      <!-- Card 4: Teaching -->
+      <div class="value-card" data-reveal style="--delay: 3">
+        <div class="card-icon">
+          <GraduationCap size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.teaching_title">Experiencia Docente</h3>
+        <p class="card-description" data-i18n="motivation.teaching_desc">
+          Background en educación aporta una perspectiva única. Capacidad de explicar conceptos técnicos de forma clara y mentorizar junior developers.
+        </p>
+      </div>
+
+      <!-- Card 5: Security -->
+      <div class="value-card" data-reveal style="--delay: 4">
+        <div class="card-icon">
+          <Shield size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.security_title">Ciberseguridad</h3>
+        <p class="card-description" data-i18n="motivation.security_desc">
+          Conocimiento en prácticas seguras de desarrollo. Implementación de autenticación, validación de datos y protección contra vulnerabilidades.
+        </p>
+      </div>
+
+      <!-- Card 6: Team -->
+      <div class="value-card" data-reveal style="--delay: 5">
+        <div class="card-icon">
+          <Users size={28} />
+        </div>
+        <h3 class="card-title" data-i18n="motivation.team_title">Colaboración</h3>
+        <p class="card-description" data-i18n="motivation.team_desc">
+          Experiencia en equipos ágiles, code reviews y metodologías Scrum. Comunicación efectiva con stakeholders y trabajo multidisciplinario.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section */
+  .motivation-section {
+    padding: 6rem 1.5rem;
+    background-color: var(--bg-deep);
+  }
+
+  .motivation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .title-accent {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+    border-radius: var(--radius-full);
+  }
+
+  /* Intro Text */
+  .motivation-intro {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Value Card */
+  .value-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+  }
+
+  .value-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+
+  .value-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Card Icon */
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+    color: var(--bg-deep);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Card Title */
+  .card-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  /* Card Description */
+  .card-description {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Stagger animation delay via CSS custom property */
+  .value-card[data-reveal] {
+    transition-delay: calc(var(--delay, 0) * 100ms);
+  }
+</style>

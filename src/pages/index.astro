@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Motivation from '../components/Motivation.astro';
+import SkillsMarquee from '../components/SkillsMarquee.astro';
+import SoftSkillsMarquee from '../components/SoftSkillsMarquee.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<BaseLayout title="Ángel Gabriel Delgado Pérez - Portfolio" description="Portfolio profesional de Ángel Gabriel Delgado Pérez - Desarrollador Full Stack">
+  <Hero />
+
+  <section id="about">
+    <About />
+  </section>
+
+  <section id="motivation">
+    <Motivation />
+  </section>
+
+  <section id="skills">
+    <SkillsMarquee />
+  </section>
+
+  <section id="softskills">
+    <SoftSkillsMarquee />
+  </section>
+
+  <section id="experience">
+    <ExperienceTimeline />
+  </section>
+
+  <section id="projects">
+    <Projects />
+  </section>
+
+  <section id="contact">
+    <Contact />
+  </section>
+</BaseLayout>

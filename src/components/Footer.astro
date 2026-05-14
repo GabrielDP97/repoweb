@@ -1,0 +1,138 @@
+---
+/**
+ * Footer.astro - Simple footer component
+ * Contains copyright, social links, and language switcher
+ */
+
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { Github, Linkedin } from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+const yearText = `© ${currentYear} Ángel Gabriel Delgado Pérez`;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- Copyright -->
+    <div class="footer-copyright">
+      <span>{yearText}</span>
+    </div>
+
+    <!-- Social Links -->
+    <div class="footer-socials">
+      <a
+        href="https://github.com/GabrielDP97"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="social-link github"
+      >
+        <Github size={18} />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/angel-gabriel-dp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="social-link"
+      >
+        <Linkedin size={18} />
+      </a>
+    </div>
+
+    <!-- Language Switcher (small) -->
+    <div class="footer-lang">
+      <LanguageSwitcher size="sm" />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-default);
+    padding: 1.5rem 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copyright {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+  }
+
+  .social-link:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .social-link.github {
+    transition: all var(--transition-fast);
+  }
+
+  [data-theme="dark"] .social-link.github {
+    color: white;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  }
+
+  [data-theme="dark"] .social-link.github:hover {
+    color: white;
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+
+  .footer-lang {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-copyright {
+      order: 2;
+    }
+
+    .footer-socials {
+      order: 1;
+    }
+
+    .footer-lang {
+      order: 3;
+    }
+  }
+</style>

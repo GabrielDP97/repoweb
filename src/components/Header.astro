@@ -1,0 +1,253 @@
+---
+/**
+ * Header.astro - Fixed top navigation bar
+ * Contains logo, nav links, theme toggle, and language switcher
+ * Mobile: hamburger menu that expands nav links
+ */
+
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import MobileMenu from './MobileMenu.astro';
+import { Sun, Moon } from 'lucide-astro';
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo / Name -->
+    <a href="#hero" class="logo">
+      <span class="logo-text">Gabriel</span><span class="logo-accent">DP</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="main-nav" id="main-nav" data-reveal>
+      <ul class="nav-links">
+        <li data-reveal><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+        <li data-reveal><a href="#skills" data-i18n="nav.skills">Habilidades</a></li>
+        <li data-reveal><a href="#experience" data-i18n="nav.experience">Experiencia</a></li>
+        <li data-reveal><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+        <li data-reveal><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right side controls -->
+    <div class="header-controls">
+      <!-- Theme Toggle -->
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Toggle theme"
+        type="button"
+      >
+        <span class="icon sun-icon">
+          <Sun size={20} />
+        </span>
+        <span class="icon moon-icon">
+          <Moon size={20} />
+        </span>
+      </button>
+
+      <!-- Language Switcher -->
+      <LanguageSwitcher />
+
+      <!-- Mobile Menu Toggle -->
+      <MobileMenu />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    backdrop-filter: blur(12px);
+    color: var(--text-primary);
+  }
+
+  .site-header a,
+  .site-header .logo,
+  .site-header .nav-links a,
+  .site-header .theme-toggle,
+  .site-header .language-switcher .current-lang-btn {
+    color: var(--text-primary);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .logo:hover {
+    color: var(--text-primary);
+  }
+
+  .logo-accent {
+    color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  [data-theme="light"] .logo-accent {
+    text-shadow: none;
+  }
+
+  /* Main Navigation */
+  .main-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+  }
+
+  [data-theme="light"] .nav-links a:hover {
+    background: var(--border-default);
+  }
+
+  /* Header Controls */
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* Theme Toggle */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .theme-toggle .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--transition-fast), transform var(--transition-base);
+  }
+
+  /* Show sun in dark mode, moon in light mode */
+  [data-theme="dark"] .moon-icon {
+    display: none;
+  }
+
+  [data-theme="light"] .sun-icon {
+    display: none;
+  }
+
+  [data-theme="light"] .moon-icon {
+    display: flex;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 1023px) {
+    .main-nav {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-default);
+      padding: 1rem;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+      z-index: 999;
+    }
+
+    .main-nav.mobile-nav-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+
+  themeToggle?.addEventListener('click', () => {
+    if (window.toggleTheme) {
+      window.toggleTheme();
+    }
+  });
+
+  // Update theme toggle icons based on current theme
+  function updateThemeIcons() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    // Icons are handled via CSS, this function can be used for any additional logic
+  }
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', updateThemeIcons);
+</script>

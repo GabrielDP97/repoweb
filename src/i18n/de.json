@@ -20,7 +20,7 @@
     "secondary": "Ich strebe danach, sauberen, wartbaren Code zu schreiben, der auf Lösungen ausgerichtet ist, die echte Auswirkungen auf Benutzer haben.",
     "years": "7+",
     "years_label": "Jahre programmiert",
-    "projects": "2+",
+    "projects": "3+",
     "projects_label": "Projekte abgeschlossen",
     "techs": "15+",
     "techs_label": "Technologien beherrscht",
@@ -69,7 +69,8 @@
       { "name": "Node.js", "icon": "nodejs" },
       { "name": "Linux", "icon": "linux" },
       { "name": "HTML", "icon": "html" },
-      { "name": "CSS", "icon": "css" }
+      { "name": "CSS", "icon": "css" },
+      { "name": "Tailwind CSS", "icon": "tailwindcss" }
     ]
   },
   "softskills": {
@@ -115,6 +116,11 @@
       "description": "Inventarverwaltungssystem entwickelt in React mit Node.js-Backend. Frontend mit Tailwind CSS und responsive Design. Docker-Container für Bereitstellung.",
       "tech": ["JavaScript", "CSS", "HTML", "Docker", "React", "Tailwind"],
       "github_url": "https://github.com/GabrielDP97/StockControl"
+    },
+    "repoweb": {
+      "name": "Portfolio CV 2.0",
+      "description": "Persönliches Portfolio entwickelt mit Astro 5.x und Tailwind CSS. Präsentiert mein professionelles Profil, technische und soziale Fähigkeiten, Erfahrung und Projekte. Enthält dynamischen Sprachwechsel, Hell/Dunkel-Modus und Scroll-Reveal-Animationen.",
+      "tech": ["Astro", "TypeScript", "Tailwind", "i18n"]
     }
   },
   "contact": {

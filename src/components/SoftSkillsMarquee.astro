@@ -20,6 +20,11 @@
       <span class="softskill-badge" data-idx="2">Comunicación efectiva</span>
       <span class="softskill-badge" data-idx="3">Liderazgo</span>
       <span class="softskill-badge" data-idx="4">Adaptabilidad</span>
+      <span class="softskill-badge" data-idx="0">Trabajo en equipo</span>
+      <span class="softskill-badge" data-idx="1">Resolución de problemas</span>
+      <span class="softskill-badge" data-idx="2">Comunicación efectiva</span>
+      <span class="softskill-badge" data-idx="3">Liderazgo</span>
+      <span class="softskill-badge" data-idx="4">Adaptabilidad</span>
         </div>
       </div>
     </div>
@@ -28,6 +33,11 @@
       <div class="softskills-wrapper">
         <div class="softskills-track" data-direction="right">
 <span class="softskill-badge" data-idx="5">Gestión del tiempo</span>
+      <span class="softskill-badge" data-idx="6">Aprendizaje continuo</span>
+      <span class="softskill-badge" data-idx="7">Pensamiento crítico</span>
+      <span class="softskill-badge" data-idx="8">Proactividad</span>
+      <span class="softskill-badge" data-idx="9">Escucha activa</span>
+      <span class="softskill-badge" data-idx="5">Gestión del tiempo</span>
       <span class="softskill-badge" data-idx="6">Aprendizaje continuo</span>
       <span class="softskill-badge" data-idx="7">Pensamiento crítico</span>
       <span class="softskill-badge" data-idx="8">Proactividad</span>
@@ -65,10 +75,13 @@
     updateSoftSkills(e.detail?.lang || 'es');
   }) as EventListener);
 
-  // Infinite scroll: transform translateX, no flicker
+  // Infinite scroll: delta-time based, 3 copies for seamless wrap
   function initInfiniteMarquee(track: HTMLElement, direction: 'left' | 'right') {
-    let pos = 0;
-    const speed = direction === 'left' ? 0.7 : -0.7;
+    // Single copy width (1/3 of total — 3 identical copies)
+    const singleCopyWidth = track.scrollWidth / 3;
+    let pos = direction === 'left' ? 0 : singleCopyWidth;
+    let lastTimestamp = 0;
+    const speed = 0.04; // pixels per ms
     let paused = false;
 
     const wrapper = track.closest('.softskills-wrapper');
@@ -77,22 +90,25 @@
       wrapper.addEventListener('mouseleave', () => { paused = false; });
     }
 
-    const move = () => {
+    const move = (timestamp: number) => {
       if (!paused) {
-        pos += speed;
-        // Halfway through, snap back to start (seamless loop)
-        if (direction === 'left' && pos >= track.scrollWidth / 2) pos = 0;
-        if (direction === 'right' && pos <= 0) pos = track.scrollWidth / 2;
+        if (lastTimestamp === 0) lastTimestamp = timestamp;
+        const delta = timestamp - lastTimestamp;
+        lastTimestamp = timestamp;
+
+        if (direction === 'left') {
+          pos += speed * delta;
+          if (pos >= singleCopyWidth) pos -= singleCopyWidth;
+        } else {
+          pos -= speed * delta;
+          if (pos <= 0) pos += singleCopyWidth;
+        }
         track.style.transform = `translateX(-${pos}px)`;
       }
       requestAnimationFrame(move);
     };
 
-    setTimeout(() => {
-      pos = 0;
-      track.style.transform = 'translateX(0)';
-      move();
-    }, 100);
+    requestAnimationFrame(move);
   }
 
   document.querySelectorAll<HTMLElement>('#softskills .softskills-track').forEach(track => {

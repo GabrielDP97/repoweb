@@ -74,6 +74,34 @@ import { Github, ExternalLink } from 'lucide-astro';
           </a>
         </div>
       </article>
+
+      <!-- Repoweb Portfolio Card -->
+      <article class="project-card" data-reveal style="--delay: 2">
+        <div class="card-header">
+          <h3 class="project-name" data-i18n="projects.repoweb.name">Portfolio CV 2.0</h3>
+          <div class="project-badges">
+            <span class="tech-badge astro">Astro</span>
+            <span class="tech-badge typescript">TypeScript</span>
+            <span class="tech-badge tailwind">Tailwind</span>
+            <span class="tech-badge i18n">i18n</span>
+          </div>
+        </div>
+        <p class="project-description" data-i18n="projects.repoweb.description">
+          Portfolio personal desarrollado con Astro 5.x y Tailwind CSS. Presenta mi perfil profesional, habilidades técnicas y blandas, experiencia y proyectos. Incluye cambio de idioma dinámico, tema claro/oscuro y animaciones de scroll reveal.
+        </p>
+        <div class="card-footer">
+          <a
+            href="https://github.com/GabrielDP97/repoweb"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            <Github size={18} />
+            <span data-i18n="projects.view_code">Ver código fuente</span>
+            <ExternalLink size={14} />
+          </a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -255,6 +283,24 @@ import { Github, ExternalLink } from 'lucide-astro';
     border: 1px solid rgba(6, 182, 212, 0.3);
   }
 
+  .tech-badge.astro {
+    background: rgba(255, 123, 114, 0.15);
+    color: #ff7b72;
+    border: 1px solid rgba(255, 123, 114, 0.3);
+  }
+
+  .tech-badge.typescript {
+    background: rgba(49, 120, 198, 0.15);
+    color: #3178c6;
+    border: 1px solid rgba(49, 120, 198, 0.3);
+  }
+
+  .tech-badge.i18n {
+    background: rgba(77, 171, 247, 0.15);
+    color: #4dabf7;
+    border: 1px solid rgba(77, 171, 247, 0.3);
+  }
+
   /* Dark theme badge adjustments */
   :global([data-theme="dark"]) .tech-badge.kotlin {
     background: rgba(123, 97, 255, 0.25);
@@ -304,6 +350,21 @@ import { Github, ExternalLink } from 'lucide-astro';
   :global([data-theme="dark"]) .tech-badge.tailwind {
     background: rgba(6, 182, 212, 0.25);
     color: #22d3ee;
+  }
+
+  :global([data-theme="dark"]) .tech-badge.astro {
+    background: rgba(255, 123, 114, 0.25);
+    color: #ffa198;
+  }
+
+  :global([data-theme="dark"]) .tech-badge.typescript {
+    background: rgba(49, 120, 198, 0.25);
+    color: #79c0ff;
+  }
+
+  :global([data-theme="dark"]) .tech-badge.i18n {
+    background: rgba(77, 171, 247, 0.25);
+    color: #79c0ff;
   }
 
   /* Project Description */
